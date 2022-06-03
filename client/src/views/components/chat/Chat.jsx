@@ -16,7 +16,7 @@ export default function Chat(props) {
   const dispatch = useDispatch();
   const {
     selectedChat,
-    user: { _id },
+    user: { _id,contacts },
   } = useSelector((state) => state.client);
   async function GetMessagesOfTheChats(chat) {
     if (chat._id === selectedChat) return;
@@ -44,7 +44,9 @@ export default function Chat(props) {
         mainSub={
           chatInfo.chat.chatName
             ? chatInfo.chat.chatName
-            : participantDetails.name
+            : contacts[participantDetails._id]
+            ? participantDetails.name
+            : participantDetails.email
         }
         seconderySub={
           chatInfo.chat.lastMessage ? (

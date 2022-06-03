@@ -9,7 +9,6 @@ self.addEventListener("install", (event) => {
   );
 });
 self.addEventListener("activate", (event) => {
-  console.log(navigator.onLine);
   event.waitUntil(
     caches.keys().then((keys) => {
       Promise.all(
@@ -19,7 +18,6 @@ self.addEventListener("activate", (event) => {
       )
     })
   );
-  console.log("active");
 });
 self.addEventListener("fetch", (event) => {
   if (event.request.url.includes("http://localhost:3000/")) {

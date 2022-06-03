@@ -59,6 +59,7 @@ async function AddContact(req, res, next) {
     await transaction.StartTransaction();
     const userService = new UserService(transaction.session);
     const contact = await userService.AddNewContact(userId, email);
+        await transaction.CommitTransaction();
     res.status(HttpStatusCodes.OK).json({contact});
   } catch (e) {
     await transaction.AbortTransaction();
@@ -74,6 +75,7 @@ async function RemoveContact(req, res, next) {
     await transaction.StartTransaction();
     const userService = new UserService(transaction.session);
     await userService.RemoveContact(userId,contactId)
+        await transaction.CommitTransaction();
     res.status(HttpStatusCodes.OK).json({ contactId });
   } catch (e) {
     await transaction.AbortTransaction();
@@ -89,6 +91,7 @@ async function GetUserConnectionStatus(req, res, next) {
     await transaction.StartTransaction();
     const userService = new UserService(transaction.session);
     const connectionStatus=await userService.GetUserConnectionStatus(userId);
+        await transaction.CommitTransaction();
     res.status(HttpStatusCodes.OK).json({ userId,connectionStatus });
   } catch (e) {
     await transaction.AbortTransaction();

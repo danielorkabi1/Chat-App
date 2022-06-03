@@ -99,7 +99,7 @@ export default function MessageField() {
           </div>
         </form>
       ) : (
-        <div>you cant type</div>
+        <div className="cannot-type">you no longer in this group</div>
       )}
     </div>
   );

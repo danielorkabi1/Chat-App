@@ -32,9 +32,6 @@ app.use(returnError)
       console.log("listen");
     })
   },()=>{
-
-  console.log(e);
-
   mongoose.connection.close()
 })
 

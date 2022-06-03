@@ -1,4 +1,5 @@
-<div align="center">
+<div id="top" align="center">
+  <img width="100" height="100" src=".github/logo_chat.png">
   <h1>Chat App Web</h1>
 </div>
 
@@ -6,7 +7,7 @@
 
 Chat-App is web project that I made when learning web development. It's inspired by WhatsApp and Messenger: in the app you can send messeges in realtime to users by private rooms or even group rooms.
 
-When you talk in private room with someone he can recive your message even if he doesn`t you;
+When you talk in private room with someone he can recive your message from any user.
 
 You can talk in group rooms with other users by adding them and you van remove them from the group.
 
@@ -18,7 +19,7 @@ You can talk in group rooms with other users by adding them and you van remove t
 - [`MongoDB`](https://www.mongodb.com/) as the databse fot the app;
 - [`RxJs`](https://rxjs.dev/) for compose asynchronous or callback-based code;
 
-... and some [more stuff](./package.json).
+... and some [more stuff](./client/package.json).
 
 ## Running locally
 
@@ -36,7 +37,7 @@ cd server
 $ npm install
 ```
 
-### Running the dev server
+### Running the app 
 
 Running the following will start the server and the client and will automatically open the webapp in your
 default browser:
@@ -52,3 +53,31 @@ in the client terminal :
 ```console
 $ npm start
 ```
+### Features
+
+#### Example Chat
+![welcome-chat](.github/welcome-chat.png)
+
+#### Add Contact
+![add-contact](.github/adding-contact.gif)
+
+#### Create Private Chat
+![creating-private-chat](.github/creating-private-chat.gif)
+
+#### Create Group Chat
+![creating-group-chat](.github/creating-group-chat.gif)
+
+#### Leave Group Chat
+![leaving-group-chat](.github/leaving-group-chat.gif)
+
+#### Add To Group Chat
+![adding-group-chat](.github/adding-group-chat.gif)
+
+
+### Contact
+Daniel Orkabi - [linkedin.com/in/danielorkabi](linkedin.com/in/danielorkabie)
+- danielorkabi@gmail.com
+
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+

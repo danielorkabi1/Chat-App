@@ -99,7 +99,7 @@ async function JoinNewParticipantsToGroup(req, res, next) {
       chatId,
       Object.keys(participants),
       joinMessages[joinMessages.length - 1]
-    );
+    )
     let chat=await chatSrevice.GetChatById(chatId)
     await transaction.CommitTransaction();
     res.status(HttpStatusCodes.OK).json({ joinMessages, addedParticipnts:participants, chatId,chat });

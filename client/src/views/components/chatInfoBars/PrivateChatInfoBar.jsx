@@ -22,14 +22,14 @@ export default function PrivateChatInfoBar({ chat }) {
     <>
       <InfoCardStyle>
         <ProfileImg profileImage={participantDetails.profileImage} />
-        {participantDetails.name&&<div className="chatName">{`user name ${participantDetails.name}`}</div>}
+        {participantDetails.name&&<div className="chatName">{participantDetails.name}</div>}
         <div className="details">{participantDetails.email}</div>
       </InfoCardStyle>
       <InfoCardStyle>
-        createdAt <DateTime date={new Date(createdAt)} /> by {createdBy.email}
+        Created at <DateTime date={new Date(createdAt)} /> by {createdBy.email}
       </InfoCardStyle>
       <InfoCardStyle>
-        shared groups:
+        Shared groups:
         {ReturnSharedGroups.map((chatInfo) => {
           return (
             <LazyCardStyle

@@ -15,7 +15,7 @@ export default function Message(props) {
   } = useSelector((state) => state.client);
 
   return (
-    <div className={id === _id ? "my-message" : "other-message"}>
+    <div className={`${id === _id ? "my-message" : "other-message"} main-sub`}>
       <div>{id === _id ? "me" : contacts[_id] ? byId[_id].name : email}</div>
       <pre>{message}</pre>
         <div className="message-time">{new Date(timesent).toLocaleTimeString([], { hour: '2-digit', minute: "2-digit", hour12: false })}</div>

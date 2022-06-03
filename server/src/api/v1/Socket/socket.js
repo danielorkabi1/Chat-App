@@ -25,7 +25,6 @@ io.on("connection", async (socket) => {
     connectedUsers[userId] = userId;
     connectedSockets[userId]=socket.id;
     socket.join(userId);
-    console.log(connectedSockets);
     const userService = new UserService();
     await userService.ChangeConnctionStatus(userId, "CONNECTED");
     socket.broadcast.emit("participant-status-connection", {
@@ -36,8 +35,6 @@ io.on("connection", async (socket) => {
   socket.on("disconnect", async () => {
     delete connectedUsers[userId];
     delete connectedSockets[socket.id];
-    console.log("disconnect");
-    console.log(socket.id);
     const userService = new UserService();
     await userService.ChangeConnctionStatus(userId, "DISCONNECTED");
     socket.broadcast.emit("participant-status-connection", {
@@ -65,7 +62,6 @@ io.on("connection", async (socket) => {
   socket.on(
     "send-a-message",
     async (chat, messageClient) => {
-      console.log(messageClient.message);
       let message = new Message({
         _id: messageClient._id,
         chatId: messageClient.chatId,
@@ -112,7 +108,6 @@ io.on("connection", async (socket) => {
         socket.to(room).emit("recive-a-message", message, chat);
       } catch (e) {
         await transaction.AbortTransaction();
-        console.log(e);
         socket.to(userId).emit("eror", e);
       } 
     }
@@ -126,7 +121,6 @@ io.on("connection", async (socket) => {
   socket.on(
     "update-new-participants-to-group",
     (joinMessages, addedParticipnts, chatId, chat) => {
-      console.log(joinMessages);
       socket.to(chatId).emit("update-new-paticipants", {
         joinMessages,
         participants: addedParticipnts,

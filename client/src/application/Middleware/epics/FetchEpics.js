@@ -170,10 +170,15 @@ export const ResetNotificationEpic = (action$, store$) =>
   });
 export const CreateUserEpic = (action$, store$) =>
   TypeObserVable({ action$, store$ }, "CREATE_USER", (action, store) => {
-    return FetchObservable({ action, store }, `${uri}/users/register`, {
-      method: "POST",
-      body: action.payload.data, 
-    });
+    return FetchObservable(
+      { action, store },
+      `${uri}/users/register`,
+      {
+        method: "POST",
+        body: action.payload.data,
+      },
+      { event: "connect", eventName: null }
+    );
   });
 
 export const AddNewContactEpic = (action$, store$) =>

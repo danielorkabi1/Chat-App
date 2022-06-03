@@ -12,24 +12,24 @@ export default function GroupChatModal({ setClose }) {
       users: { byId: usersById },
     },
   } = useSelector((state) => state);
-  const dispatch=useDispatch()
+  const dispatch = useDispatch();
   const [checkedContacts, setCheckedContacts] = useState({
     [_id]: { email, _id, profileImageUser, name },
   });
   const [profileImage, setProfileImage] = useState(null);
   const [chatName, setChatName] = useState(null);
-  const [errors,setErrors]=useState(null)
+  const [errors, setErrors] = useState(null);
   function CreateNewGroup() {
     if (Object.keys(checkedContacts).length === 1) {
-      setErrors('Please Chose Participants')
+      setErrors("Please Chose Participants");
       return;
     }
     if (!chatName) {
-      setErrors('Please Enter a name')
+      setErrors("Please Enter a name");
       return;
     }
     const data = new FormData();
-    setErrors(null)
+    setErrors(null);
     if (profileImage) data.append("profileImage", profileImage);
     data.append("chatName", chatName);
     data.append("createdBy", _id);
@@ -41,15 +41,19 @@ export default function GroupChatModal({ setClose }) {
     <Modal clickHandler={CreateNewGroup} close={() => setClose(false)}>
       <h1>Create group chat</h1>
       <TextField placeholder="chat name" onChange={setChatName} />
-      {errors?<Error data={errors}/>:null}
-      <ContactsList
-        checkedContacts={checkedContacts}
-        setCheckedContacts={setCheckedContacts}
-        contacts={Object.keys(contacts).reduce((prevContacts, contact) => {
-          return { ...prevContacts, [contact]: usersById[contact] };
-        }, {})}
-      />
-      <div>
+      {errors ? <Error data={errors} /> : null}
+      <div className="continer-modal">
+        <div>Add Participants</div>
+        <ContactsList
+          checkedContacts={checkedContacts}
+          setCheckedContacts={setCheckedContacts}
+          contacts={Object.keys(contacts).reduce((prevContacts, contact) => {
+            return { ...prevContacts, [contact]: usersById[contact] };
+          }, {})}
+        />
+      </div>
+      <div className="continer-modal">
+        <div>Add profileImage</div>
         <input
           type="file"
           onChange={(e) => setProfileImage(e.target.files[0])}

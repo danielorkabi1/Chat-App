@@ -1,5 +1,4 @@
 import { io } from "socket.io-client";
-import IndexDB from "../../Utils/IndexDB/IndexDBClass";
 import {
   Connect,
   JoinNewGroup,
@@ -10,13 +9,12 @@ import {
   UpdateChatProfileImage,
   UpdateNewParticipants,
 } from "../../Utils/Socket";
-import { ChangeParticipantConnctionStatusAction } from "../actions/clientActions";
 export default function Socketmiddleware() {
   let socket;
   let userId;
   return ({ dispatch, getState }) =>
-    (next) =>
-    (action) => {
+  (next) =>
+  (action) => {
       if (action.soecketEvent) {
         const {
           soecketEvent: {

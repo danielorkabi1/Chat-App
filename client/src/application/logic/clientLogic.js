@@ -129,9 +129,10 @@ export function JoinNewParticipantsToGroupLogic(state, payload) {
     (draftState) => {
       Object.assign(draftState.users.byId, participants);
       draftState.users.allIds.push(...Object.keys(participants));
+     const newPrticipants = ConvertArrayIntoObj(Object.values(participants)).ids;
       Object.assign(
         draftState.chats.byId[chatId].chat.participants,
-        participants
+        newPrticipants
       );
     }
   );

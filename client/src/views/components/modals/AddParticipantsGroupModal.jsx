@@ -12,7 +12,7 @@ export default function AddParticipantsGroupModal({ setClose }) {
       selectedChat,
     },
   } = useSelector((state) => state);
-  const dispatch=useDispatch()
+  const dispatch = useDispatch();
   const [checkedContacts, setCheckedContacts] = useState({});
   function AddPraticipants(e) {
     if (Object.keys(checkedContacts).length === 0) {
@@ -28,15 +28,17 @@ export default function AddParticipantsGroupModal({ setClose }) {
   return (
     <Modal clickHandler={AddPraticipants} close={() => setClose(false)}>
       <h1>Add participants to group - {chatsById[selectedChat].chatName}</h1>
-      <ContactsList
-        checkedContacts={checkedContacts}
-        setCheckedContacts={setCheckedContacts}
-        contacts={Object.values(contacts).reduce((prevContact, contact) => {
-          if (!chatsById[selectedChat].chat.participants[contact])
-            return { ...prevContact, [contact]: usersById[contact] };
-          return prevContact;
-        }, {})}
-      />
+      <div className="continer-modal">
+        <ContactsList
+          checkedContacts={checkedContacts}
+          setCheckedContacts={setCheckedContacts}
+          contacts={Object.values(contacts).reduce((prevContact, contact) => {
+            if (!chatsById[selectedChat].chat.participants[contact])
+              return { ...prevContact, [contact]: usersById[contact] };
+            return prevContact;
+          }, {})}
+        />
+      </div>
     </Modal>
   );
 }

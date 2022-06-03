@@ -1,10 +1,13 @@
-import { useSelector } from "react";
-export default function IsLoading({ children, fallback }) {
+import { useSelector } from "react-redux";
+import Loader from "./Lodaer";
+import React from "react";
+
+export default function IsLoading({ children, }) {
   const { isLoading } = useSelector((state) => state);
-  if (isLoading.isLoading) {
+  if (!isLoading.isLoading) {
     return children;
   }
   else{
-      return {fallback}
+      return <Loader/>
   }
 }

@@ -18,11 +18,13 @@ async function CreateNewPrivateChatIfNotExists(req, res, next) {
     let chat = await chatService.GetPrivateChat(
       participants,
       userId
-    );
+    )
     const messageSrevice = new MessageSrevice(transaction.session);
     let messages = await messageSrevice.GetMessagesOfChatById(chat._id);
     chat.lastMessage = messages[0];
     chat.messages = messages;
+    await transaction.CommitTransaction();
+    await transaction.StartTransaction();
     const userService = new UserService(transaction.session);
     if(!chatService.CheckIfCreaterOfChat(chat,userId))
         await userService.UpdateNotification(userId,chat._id)
@@ -31,7 +33,7 @@ async function CreateNewPrivateChatIfNotExists(req, res, next) {
     res.status(HttpStatusCodes.Created).json({ chat });
   } catch (e) {
     await transaction.AbortTransaction();
-    next(e);
+    next(e)
   } 
 }
 

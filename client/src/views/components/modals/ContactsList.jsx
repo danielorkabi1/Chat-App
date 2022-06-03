@@ -24,8 +24,7 @@ export default function ContactsList({ checkedContacts, setCheckedContacts,conta
             }
             label={
               <div>
-                <div>name- {contact.name}</div>
-                <div>email- {contact.email}</div>
+                <div className="main-sub" style={{'font-size':'20px'}}>{contact.name}</div>
               </div>
             }
           />

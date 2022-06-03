@@ -6,13 +6,6 @@
   --secondery-background: #f7f7f7;
   --not-my-message-background: #303347;
   --my-message-background: #6784ff;
-  /* --premier-background: #61919f;
-  --premier-font: "Staatliches", cursive;
-  --button-color: #487f63; /*#3498db*/
-  /* --premier-color: #1a2e39;
-  --secondery-background: #2c3246;
-  --not-my-message-background: #a36147;
-  --my-message-background: #e6e67d; */
 }
 body {
   margin: 0;
@@ -112,10 +105,15 @@ button.button-bar:hover::before {
 .modal-cover,
 .continer,
 .card,
+.cannot-type,
 .textarea-continer {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.cannot-type{
+    font-size: 1.5rem;
+  font-family: var(--premier-font);
 }
 .continer {
   flex-direction: column;
@@ -372,7 +370,13 @@ textarea {
 .modal-Container {
   flex-direction: column;
   color: #1a2238;
+  
 }
+.modal-Container  div.continer-modal{
+  width: 75%;
+  max-width: 14em;
+}
+
 .modal-cover {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 2;
@@ -479,19 +483,16 @@ aside.chat-info .details {
   text-overflow: ellipsis;
   width: 100%;
 }
-/* .card  > img {
-  float: left;
-  margin-inline: 10px;
-}
-*/
+
 .card > div {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   overflow: hidden;
 }
-.main-sub {
+.main-sub, .continer-modal {
   font-size: 1.5rem;
+  font-family: var(--premier-font);
 }
 .with-options-continer {
   position: relative;
