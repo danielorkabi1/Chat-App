@@ -135,7 +135,7 @@ button.button-bar:hover::before {
   height: 3em;
   margin: 20px;
 }
-input[type="text"].text-field {
+input[type="text"].text-field ,input[type="password"].text-field {
   width: 98%;
   height: 80%;
   border-radius: 10px;
@@ -160,8 +160,9 @@ input[type="text"].text-field {
   transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
 }
 input[type="text"].text-field:focus ~ .label-text-field,
-input[type="text"].text-field:not(:placeholder-shown).text-field:not(:focus)
-  ~ .label-text-field {
+input[type="password"].text-field:focus ~ .label-text-field,
+input[type="text"].text-field:not(:placeholder-shown).text-field:not(:focus) ~ .label-text-field ,
+input[type="password"].text-field:not(:placeholder-shown).text-field:not(:focus) ~ .label-text-field {
   top: 5%;
   font-size: 1rem;
   background: white;

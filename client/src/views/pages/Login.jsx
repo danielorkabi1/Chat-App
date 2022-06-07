@@ -46,9 +46,17 @@ export default function Login() {
       <div className="continer">
         <form className="login" onSubmit={Submit}>
           <h1>Login</h1>
-         {fetchFaild?<Error data='Not Found User'/>:errorFields?<Error data={errorFields}/>:null}
+          {fetchFaild ? (
+            <Error data="Not Found User" />
+          ) : errorFields ? (
+            <Error data={errorFields} />
+          ) : null}
           <TextField placeholder="email" onChange={setEmail} />
-          <TextField placeholder="password" onChange={setPassword} />
+          <TextField
+            placeholder="password"
+            type="password"
+            onChange={setPassword}
+          />
           <PrimiarAnimatedBtn>login</PrimiarAnimatedBtn>
         </form>
         <Link to="/register">register</Link>

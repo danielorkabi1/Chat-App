@@ -46,7 +46,8 @@ export default function Register() {
     if (!currentErrors.email && !validEmail.test(currentFields.email))
       currentErrors.email = "email is not valid";
     if (!currentErrors.password && !validPassword.test(currentFields.password))
-      currentErrors.password = "password is not valid";
+      currentErrors.password =
+        "password is not valid,Must contain one or more letters and then 5 numbers or more";
     if (Object.keys(currentErrors).length === 0) setCanSubmit(true);
     setValidErors(currentErrors);
     setFields(currentFields);
@@ -67,6 +68,7 @@ export default function Register() {
           <TextField
             placeholder="password"
             name="password"
+            type="password"
             onChange={HandleChange}
           />
           <div>{validErors.password ? validErors.password : null}</div>
